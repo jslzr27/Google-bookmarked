@@ -4,19 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jslzr27/Google-bookmarked.git"
   },
-  "author": "",
+  "author": "Jesus Salazar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jslzr27/Google-bookmarked/issues"
   },
   "homepage": "https://github.com/jslzr27/Google-bookmarked#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
