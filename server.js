@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,6 +18,15 @@ app.get("*", (req, res) => {
 app.get('/express_backend', (req, res) => {
     res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
   });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/google-books");
+let db = mongoose.connection; 
+
+//Check for connection
+db.once('open', () => console.log("connected to MongoDB")) ;
+
+//Check for db errors
+db.on('error', err => console.log(err));
 
 app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`)
